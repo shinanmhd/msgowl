@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Http;
 use Hadhiya\MsgOwl\Facades\MsgOwl;
+use Illuminate\Support\Facades\Http;
 
 it('can mock a sent sms', function () {
     Http::fake([

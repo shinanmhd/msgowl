@@ -21,7 +21,7 @@ class MsgOwlChannel
         if (! method_exists($notification, 'toMsgOwl')) {
             return;
         }
-        
+
         $message = $notification->toMsgOwl($notifiable);
 
         if (is_string($message)) {
@@ -38,6 +38,7 @@ class MsgOwlChannel
                 'body' => $params['body'],
                 'sender' => $params['sender_id'] ?? config('msgowl.sender_id'),
             ]);
+
             return;
         }
 

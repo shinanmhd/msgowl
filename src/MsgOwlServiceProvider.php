@@ -2,9 +2,9 @@
 
 namespace Hadhiya\MsgOwl;
 
+use Hadhiya\MsgOwl\Commands\MsgOwlCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Hadhiya\MsgOwl\Commands\MsgOwlCommand;
 
 class MsgOwlServiceProvider extends PackageServiceProvider
 {
