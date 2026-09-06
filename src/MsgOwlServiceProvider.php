@@ -2,9 +2,10 @@
 
 namespace Hadhiya\MsgOwl;
 
+use Hadhiya\MsgOwl\Channels\MsgOwlChannel;
+use Hadhiya\MsgOwl\Commands\MsgOwlCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Hadhiya\MsgOwl\Commands\MsgOwlCommand;
 
 class MsgOwlServiceProvider extends PackageServiceProvider
 {
@@ -36,7 +37,7 @@ class MsgOwlServiceProvider extends PackageServiceProvider
         });
 
         // Bind the Notification Channel
-        $this->app->bind(MsgOwlChannel::class, function ($app) {
+        $this->app->bind(MsgOwlChannel::class, function ($app): MsgOwlChannel {
             return new MsgOwlChannel($app->make(MsgOwl::class));
         });
     }

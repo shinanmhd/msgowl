@@ -1,11 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Http;
+use Hadhiya\MsgOwl\Channels\MsgOwlChannel;
 use Hadhiya\MsgOwl\Facades\MsgOwl;
+use Illuminate\Support\Facades\Http;
 
 it('can mock a sent sms', function () {
     Http::fake([
-        'api.msgowl.com/*' => Http::response(['status' => 'success'], 200),
+        'rest.msgowl.com/*' => Http::response(['status' => 'success'], 200),
     ]);
 
     $response = MsgOwl::send([
@@ -14,4 +15,9 @@ it('can mock a sent sms', function () {
     ]);
 
     expect($response->json('status'))->toBe('success');
+});
+
+it('resolves the Laravel notification channel', function () {
+    expect(app()->bound(MsgOwlChannel::class))->toBeTrue();
+    expect(app(MsgOwlChannel::class))->toBeInstanceOf(MsgOwlChannel::class);
 });

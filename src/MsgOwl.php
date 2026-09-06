@@ -2,13 +2,14 @@
 
 namespace Hadhiya\MsgOwl;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class MsgOwl
 {
     protected string $restBaseUrl = 'https://rest.msgowl.com';
+
     protected string $otpBaseUrl = 'https://otp.msgowl.com';
 
     public function __construct(
@@ -45,13 +46,14 @@ class MsgOwl
         if ($params instanceof MsgOwlMessage) {
             if ($params->isDryRun) {
                 Log::info('MsgOwl Dry Run:', $params->toArray());
-                return null; 
+
+                return null;
             }
             $params = $params->toArray();
         }
 
         $params['sender_id'] ??= $this->senderId;
-        
+
         return $this->client('standard')->post("{$this->restBaseUrl}/messages", $params);
     }
 
@@ -62,7 +64,7 @@ class MsgOwl
     public function sendOtp(string $phoneNumber, array $options = []): Response
     {
         $payload = array_merge([
-            'phone_number' => $phoneNumber
+            'phone_number' => $phoneNumber,
         ], $options);
 
         return $this->client('otp')->post("{$this->otpBaseUrl}/send", $payload);

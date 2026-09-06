@@ -2,9 +2,9 @@
 
 namespace Hadhiya\MsgOwl\Tests;
 
+use Hadhiya\MsgOwl\MsgOwlServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Hadhiya\MsgOwl\MsgOwlServiceProvider;
 
 class TestCase extends Orchestra
 {

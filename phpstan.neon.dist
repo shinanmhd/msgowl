@@ -10,5 +10,5 @@ parameters:
     tmpDir: build/phpstan
     ignoreErrors:
         -
-            message: '#Called "env" outside of the config directory#'
-            path: config/msgowl.php
+            identifier: larastan.noEnvCallsOutsideOfConfig
+            path: %currentWorkingDirectory%/config/msgowl.php

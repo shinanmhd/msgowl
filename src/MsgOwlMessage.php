@@ -8,7 +8,7 @@ class MsgOwlMessage
      * Whether the message should be logged instead of sent.
      */
     public bool $isDryRun = false;
-    
+
     public function __construct(
         public string $body = '',
         public ?string $senderId = null,
